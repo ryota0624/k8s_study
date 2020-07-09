@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+ name: my-nginx
+spec:
+ type: NodePort
+ selector:
+  app: my-nginx
+  release: spring
+ ports:
+ - name: http
+   port: 80

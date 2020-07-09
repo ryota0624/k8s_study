@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: my-nginx
+ labels:
+  app: my-nginx
+  release: spring
+spec:
+  replicas: 1
+  selector:
+   matchLabels:
+    app: my-nginx
+  template:
+    metadata:
+      labels:
+        app: my-nginx
+        release: spring
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.11.3
+        env:
+        - name: BACKEND_HOST
+          value: localhost:8080
+        ports:
+        - containerPort: 80
